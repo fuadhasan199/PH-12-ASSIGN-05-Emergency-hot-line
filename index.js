@@ -1,16 +1,16 @@
- let heart=document.getElementsByClassName("heart")
+ let hearts=document.getElementsByClassName("heart")
  let nav_heart=document.querySelector("#nav-heart span") 
 
 
 
- for (let i = 0; i < heart.length; i++) {
-    heart[i].onclick = function() {
-      let count = parseInt(nav_heart.innerText, 10);
-      count += 1;
-      nav_heart.innerText = count;
-    };
-  } 
-
+ 
+for (const heart of hearts) {
+  heart.onclick = function() {
+    let count = parseInt(nav_heart.innerText, 10);
+    count += 1;
+    nav_heart.innerText = count;
+  };
+}
 
 //   call button work 
 
@@ -104,7 +104,7 @@ for (const copybutton of copyButtons) {
 const Copynumber=cardSerach.querySelector(".data-num").innerText ;
 
  navigator.clipboard.writeText(Copynumber).then(function(){
-    alert(" This Number has been Copied " +Copynumber)
+    alert("This Number has been Copied " +Copynumber)
  })
  
 
