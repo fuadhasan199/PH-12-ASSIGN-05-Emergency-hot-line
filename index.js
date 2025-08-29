@@ -5,7 +5,7 @@
 
  for (let i = 0; i < heart.length; i++) {
     heart[i].onclick = function() {
-      var count = parseInt(nav_heart.innerText, 10);
+      let count = parseInt(nav_heart.innerText, 10);
       count += 1;
       nav_heart.innerText = count;
     };
@@ -40,7 +40,7 @@ for (const callbutton of callButtons) {
      
       
      
-     alert(`Calling ${title}: ${number}`) 
+     alert(`📞 Calling.... ${title}: ${number}`) 
  
      const addTime=document.createElement("span")
      const date=new Date() 
@@ -49,7 +49,7 @@ for (const callbutton of callButtons) {
 
      clearBtn.onclick=function(){
   
-          const entries = Array.from(callHistory.children).slice(1); 
+          const entries = Array.from(callHistory.children).slice(); 
 
           for (const entrie of entries) {
              entrie.remove()
@@ -62,8 +62,8 @@ for (const callbutton of callButtons) {
 
 const historyAdd = document.createElement("div");
 
-historyAdd.className = " bg-gray-100 text-gray-800 mt-5"; 
-addTime.className="bg-gray-100 text-gray-800 "
+historyAdd.className = " bg-gray-100 text-gray-800 mt-5 shadow-lg p-5"; 
+addTime.className="bg-gray-100 text-gray-800 p-2"
 
 historyAdd.textContent = ` ${title} : ${number} `;
 
@@ -80,4 +80,38 @@ callHistory.appendChild(addTime)
 
 }
 
+//  copy button work
+
+const navCopy=document.getElementById("nav-copy") 
+
+const copyButtons=document.querySelectorAll(".copy-btn")  
+
+ 
+
+
+for (const copybutton of copyButtons) { 
+     
+    copybutton.addEventListener("click",function(){
+
+   let count_copy=parseInt(navCopy.innerText,10) 
+
+   count_copy +=1 
+
+   navCopy.innerText=count_copy +" Copy" 
+
+   
+ const cardSerach=copybutton.closest(".card-items")
+const Copynumber=cardSerach.querySelector(".data-num").innerText ;
+
+ navigator.clipboard.writeText(Copynumber).then(function(){
+    alert(" This Number has been Copied " +Copynumber)
+ })
+ 
+
+   
+
+
+
+    })
+}
 
